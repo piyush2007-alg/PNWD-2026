@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PN Studios</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#0a0a14;
+    color:white;
+}
+
+/* HEADER */
+header{
+    background:linear-gradient(90deg,#00f5ff,#0066ff);
+    padding:25px;
+    text-align:center;
+    font-size:32px;
+    font-weight:bold;
+    letter-spacing:3px;
+    text-shadow:0 0 15px white;
+}
+
+/* NAVIGATION */
+nav{
+    background:#111;
+    padding:15px;
+    text-align:center;
+}
+
+nav a{
+    color:#00f5ff;
+    text-decoration:none;
+    margin:20px;
+    font-weight:bold;
+    font-size:18px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:white;
+    text-shadow:0 0 10px #00f5ff;
+}
+
+/* HERO SECTION */
+.hero{
+    text-align:center;
+    padding:80px 20px;
+    background:linear-gradient(180deg,#0a0a14,#111);
+}
+
+.hero h2{
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:20px;
+    margin-bottom:30px;
+}
+
+.hero img{
+    width:300px;
+    animation:float 3s infinite ease-in-out;
+}
+
+/* FLOAT ANIMATION */
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
+    100%{transform:translateY(0);}
+}
+
+/* ABOUT SECTION */
+.about{
+    padding:60px 20px;
+    text-align:center;
+}
+
+.about h2{
+    margin-bottom:20px;
+    font-size:30px;
+    color:#00f5ff;
+}
+
+.about p{
+    max-width:800px;
+    margin:auto;
+    line-height:1.6;
+}
+
+/* SERVICES */
+.services-section{
+    padding:60px 20px;
+    background:#111;
+}
+
+.services-section h2{
+    text-align:center;
+    margin-bottom:40px;
+    color:#00f5ff;
+}
+
+.services{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+article{
+    background:#1a1a2e;
+    margin:20px;
+    padding:25px;
+    width:280px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 0 20px #00f5ff33;
+    transition:0.4s;
+}
+
+article:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 25px #00f5ff;
+}
+
+article img{
+    width:90px;
+    margin-bottom:15px;
+}
+
+article h3{
+    margin-bottom:10px;
+}
+
+/* PROJECTS */
+.projects{
+    padding:60px 20px;
+    text-align:center;
+}
+
+.project-gallery{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.project-gallery img{
+    width:250px;
+    margin:15px;
+    border-radius:10px;
+    transition:0.4s;
+}
+
+.project-gallery img:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 20px #00f5ff;
+}
+
+/* CONTACT */
+.contact{
+    padding:60px 20px;
+    background:#111;
+    text-align:center;
+}
+
+.contact input, .contact textarea{
+    width:300px;
+    padding:10px;
+    margin:10px;
+    border:none;
+    border-radius:5px;
+}
+
+.contact button{
+    padding:10px 25px;
+    border:none;
+    background:#00f5ff;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+.contact button:hover{
+    background:#0066ff;
+    color:white;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:25px;
+    background:black;
+    border-top:2px solid #00f5ff;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .services{
+        flex-direction:column;
+        align-items:center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    PN Studios
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Projects</a>
+    <a href="#">Contact</a>
+</nav>
+
+<section class="hero">
+    <h2>Building The Future With Technology</h2>
+    <p>Innovative. Creative. Powerful Digital Solutions.</p>
+    <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png">
+</section>
+
+<section class="about">
+    <h2>About PN Studios</h2>
+    <p>
+        PN Studios is a next-generation technology company focused on delivering 
+        high-quality digital experiences. We specialize in modern web development, 
+        futuristic UI/UX design, and cutting-edge applications that help businesses grow.
+    </p>
+</section>
+
+<section class="services-section">
+    <h2>Our Services</h2>
+    <div class="services">
+
+        <article>
+            <img src="https://cdn-icons-png.flaticon.com/512/2721/2721297.png">
+            <h3>Web Development</h3>
+            <p>Responsive and high-performance websites.</p>
+        </article>
+
+        <article>
+            <img src="https://cdn-icons-png.flaticon.com/512/2920/2920277.png">
+            <h3>App Development</h3>
+            <p>Android & iOS mobile applications.</p>
+        </article>
+
+        <article>
+            <img src="https://cdn-icons-png.flaticon.com/512/1055/1055646.png">
+            <h3>UI/UX Design</h3>
+            <p>Modern and futuristic interface design.</p>
+        </article>
+
+        <article>
+            <img src="https://cdn-icons-png.flaticon.com/512/3523/3523887.png">
+            <h3>Digital Marketing</h3>
+            <p>Grow your business with smart marketing strategies.</p>
+        </article>
+
+    </div>
+</section>
+
+<section class="projects">
+    <h2>Our Projects</h2>
+    <div class="project-gallery">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c">
+    </div>
+</section>
+
+<section class="contact">
+    <h2>Contact Us</h2>
+    <input type="text" placeholder="Your Name"><br>
+    <input type="email" placeholder="Your Email"><br>
+    <textarea rows="4" placeholder="Your Message"></textarea><br>
+    <button>Send Message</button>
+</section>
+
+<footer>
+    © 2026 PN Studios | Designed with 💙 by PN Studios
+</footer>
+
+</body>
+</html>
