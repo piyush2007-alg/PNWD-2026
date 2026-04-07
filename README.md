@@ -1,39 +1,44 @@
-# Image Gallery
+Web-Devlopment
+PRE-LAB
 
-This project is an image gallery webpage that showcases a collection of images with hover effects and smooth transitions. The gallery is designed to be visually appealing and user-friendly.
+AIM: Create a GitHub account and demonstrate repository creation, file upload, and version management for web projects.
 
-## Project Structure
 
-The project consists of the following files:
+Practical No. 2
 
-- **index.html**: The main HTML document that contains the structure of the image gallery.
-- **styles.css**: The external CSS file that styles the gallery layout, including hover effects with gradients and transitions.
-- **script.js**: The JavaScript file that handles dynamic behavior for the image gallery, such as event listeners and image loading.
+Aim: Study the structure of HTML5 document and explore new semantic elements (header, footer, section, article).
 
-## Getting Started
 
-To set up and run the image gallery, follow these steps:
+Practical No. 3
 
-1. **Clone the repository**:
-   ```bash
-   git clone <repository-url>
-   cd image-gallery
-   ```
+Aim: Design a basic webpage using HTML5 elements such as text formatting, lists (ordered, unordered, and description lists) and hyperlinks (internal, external, and email links), marquee and images.
 
-2. **Open the `index.html` file** in your web browser. You can do this by double-clicking the file or by using a local server.
 
-3. **Explore the gallery**: Hover over the images to see the gradient effects and transitions in action.
 
-## Features
+Practical No. 4
+Aim: Develop a webpage to display tabular data (Timetable / Student Record) using advanced table tags and attributes.
 
-- Responsive design that adapts to different screen sizes.
-- Smooth hover effects with gradient overlays on images.
-- Easy to customize and extend with additional images or styles.
 
-## Contributing
 
-If you would like to contribute to this project, feel free to submit a pull request or open an issue for any suggestions or improvements.
+Practical No. 5
+Aim: Design a resume webpage using HTML5 with image, list, table, and hyperlink integration.
 
-## License
 
-This project is open-source and available under the [MIT License](LICENSE).
+
+Practical No. 6
+Aim: Implement a scholarship / seminar registration form using field set, input field, legend, radio buttons, checkboxes, drop-down list.
+
+
+
+Practical No. 7
+Aim: Develop a tribute / profile page using Internal CSS for styling text, borders, background, Navigation Bar and layout.
+
+
+Practical No. 8
+
+Aim: Create an image gallery webpage using External CSS with hover effects, gradients and transitions
+
+
+
+Practical No. 9
+Aim: Design a responsive webpage using CSS3 features such as multiple columns, fonts. icons, animations, and transformations.
