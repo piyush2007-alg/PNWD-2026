@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohit Sharma - Profile</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #eef2f3;
+        }
+
+        header {
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        header h1 {
+            animation: slideDown 1s ease-in-out;
+        }
+
+        @keyframes slideDown {
+            from {transform: translateY(-50px); opacity: 0;}
+            to {transform: translateY(0); opacity: 1;}
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #333;
+        }
+
+        nav a {
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background: #555;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            margin: 10px;
+            padding: 20px;
+            flex: 1 1 300px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .icon {
+            font-size: 30px;
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+
+        /* Image Section */
+        .profile-img {
+            display: block;
+            margin: auto;
+            width: 200px;
+            border-radius: 50%;
+            transition: transform 0.5s;
+        }
+
+        .profile-img:hover {
+            transform: rotate(5deg) scale(1.1);
+        }
+
+        /* Multi-column text */
+        .about {
+            column-count: 2;
+            column-gap: 20px;
+            background: white;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about {
+                column-count: 1;
+            }
+        }
+
+        footer {
+            text-align: center;
+            background: #333;
+            color: white;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Rohit Sharma</h1>
+    <p>Hitman of Indian Cricket</p>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Career</a>
+    <a href="#">Records</a>
+</nav>
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Rohit_Sharma_2023.jpg" class="profile-img">
+
+<div class="container">
+
+    <div class="card">
+        <i class="fas fa-user icon"></i>
+        <h3>Personal Info</h3>
+        <p>Born: 30 April 1987<br>Role: Batsman<br>Team: India</p>
+    </div>
+
+    <div class="card">
+        <i class="fas fa-trophy icon"></i>
+        <h3>Achievements</h3>
+        <p>3 Double Centuries in ODIs, ICC Titles, Captain of Indian Team</p>
+    </div>
+
+    <div class="card">
+        <i class="fas fa-chart-line icon"></i>
+        <h3>Records</h3>
+        <p>Highest ODI Score: 264 runs, Most sixes in World Cup</p>
+    </div>
+
+</div>
+
+<div class="about">
+    <p>
+        Rohit Sharma is one of the most successful opening batsmen in modern cricket.
+        Known for his elegant stroke play, he has achieved multiple milestones in international cricket.
+        He is the only player to score three double centuries in ODI cricket.
+        As a captain, he has led India to many victories and is known for calm leadership.
+    </p>
+</div>
+
+<footer>
+    <p>© 2026 Rohit Sharma Webpage</p>
+</footer>
+
+</body>
+</html>
