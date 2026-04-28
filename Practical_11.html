@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HTML5 API Showcase</title>
+
+<style>
+  * {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  body {
+    margin: 0;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #333;
+  }
+
+  h1 {
+    text-align: center;
+    color: white;
+    padding: 20px;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #6a11cb;
+  }
+
+  /* Drag & Drop */
+  #dragBox {
+    width: 120px;
+    padding: 12px;
+    background: #6a11cb;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    cursor: grab;
+    margin-bottom: 10px;
+  }
+
+  #dropZone {
+    height: 150px;
+    border: 2px dashed #6a11cb;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    transition: background 0.3s;
+  }
+
+  #dropZone.hovered {
+    background: #f3e8ff;
+  }
+
+  /* Buttons */
+  button {
+    background: #6a11cb;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    background: #4b0fa3;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+
+  .output {
+    margin-top: 10px;
+    padding: 10px;
+    background: #f4f4f4;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>✨ HTML5 API Showcase</h1>
+
+<div class="container">
+
+  <!-- Drag & Drop -->
+  <div class="card">
+    <h2>🎯 Drag & Drop</h2>
+    <div id="dragBox" draggable="true">Drag me</div>
+    <div id="dropZone">Drop here</div>
+  </div>
+
+  <!-- Geolocation -->
+  <div class="card">
+    <h2>📍 Geolocation</h2>
+    <button onclick="getLocation()">Get Location</button>
+    <div id="locationOutput" class="output">Location will appear here</div>
+  </div>
+
+  <!-- Web Storage -->
+  <div class="card">
+    <h2>💾 Web Storage</h2>
+    <input type="text" id="nameInput" placeholder="Enter your name">
+    <button onclick="saveData()">Save</button>
+    <button onclick="loadData()">Load</button>
+    <button onclick="clearData()">Clear</button>
+    <div id="savedData" class="output">No data yet</div>
+  </div>
+
+</div>
+
+<script>
+/* Drag & Drop */
+const dragBox = document.getElementById("dragBox");
+const dropZone = document.getElementById("dropZone");
+
+dragBox.addEventListener("dragstart", (e) => {
+  e.dataTransfer.setData("text", e.target.id);
+});
+
+dropZone.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  dropZone.classList.add("hovered");
+});
+
+dropZone.addEventListener("dragleave", () => {
+  dropZone.classList.remove("hovered");
+});
+
+dropZone.addEventListener("drop", (e) => {
+  e.preventDefault();
+  dropZone.classList.remove("hovered");
+  const data = e.dataTransfer.getData("text");
+  dropZone.appendChild(document.getElementById(data));
+});
+
+/* Geolocation */
+function getLocation() {
+  const output = document.getElementById("locationOutput");
+
+  if (navigator.geolocation) {
+    output.innerHTML = "Fetching location...";
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        output.innerHTML = `
+          📌 Latitude: ${pos.coords.latitude.toFixed(4)} <br>
+          📌 Longitude: ${pos.coords.longitude.toFixed(4)}
+        `;
+      },
+      () => {
+        output.innerHTML = "❌ Permission denied.";
+      }
+    );
+  } else {
+    output.innerHTML = "Geolocation not supported.";
+  }
+}
+
+/* Web Storage */
+function saveData() {
+  const name = document.getElementById("nameInput").value;
+  localStorage.setItem("username", name);
+  document.getElementById("savedData").innerText = "✅ Data saved!";
+}
+
+function loadData() {
+  const name = localStorage.getItem("username");
+  document.getElementById("savedData").innerText =
+    name ? "👤 Saved Name: " + name : "No data found.";
+}
+
+function clearData() {
+  localStorage.removeItem("username");
+  document.getElementById("savedData").innerText = "🗑 Data cleared.";
+}
+</script>
+
+</body>
+</html>
