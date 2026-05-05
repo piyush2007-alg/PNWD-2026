@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laptop Store</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+body{background:#f8f9fa;}
+.hero{background:linear-gradient(135deg,#111,#333);color:white;padding:80px 0;}
+.laptop-card{border:none;border-radius:20px;overflow:hidden;transition:.3s;box-shadow:0 5px 20px rgba(0,0,0,.1);}
+.laptop-card:hover{transform:translateY(-8px);}
+.laptop-card img{height:220px;object-fit:cover;}
+footer{background:#111;color:white;}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">💻 Laptop World</a>
+
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Categories</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item">Gaming Laptop</a></li>
+            <li><a class="dropdown-item">Business Laptop</a></li>
+            <li><a class="dropdown-item">Student Laptop</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Breadcrumb -->
+<div class="container mt-3">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item active">Laptops</li>
+  </ol>
+</div>
+
+<!-- Hero -->
+<section class="hero text-center">
+  <div class="container mb-4">
+    <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=1200" class="img-fluid rounded shadow" alt="Laptop Banner">
+  </div>
+  <div class="container">
+    <h1 class="fw-bold">Premium Laptop Collection</h1>
+    <p class="lead">Gaming • Business • Student • Creator Series</p>
+    <p>Gaming, Business, Student & Professional laptops</p>
+    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#offerModal">View Offers</button>
+  </div>
+</section>
+
+<!-- Grid + Cards -->
+<section class="container py-5">
+  <div class="row g-4">
+
+    <div class="col-lg-4 col-md-6 col-12">
+      <div class="card laptop-card h-100">
+        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=1200">
+        <div class="card-body text-center">
+          <h5>Gaming Laptop</h5>
+          <button class="btn btn-primary">Buy Now</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 col-12">
+      <div class="card laptop-card h-100">
+        <img src="https://images.unsplash.com/photo-1517336714739-489689fd1ca8?q=80&w=1200">
+        <div class="card-body text-center">
+          <h5>Student Laptop</h5>
+          <button class="btn btn-danger">Buy Now</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Form -->
+<section class="container pb-5">
+  <div class="col-lg-6 mx-auto bg-white p-4 rounded shadow">
+    <h3>Contact Us</h3>
+    <form>
+      <input type="text" class="form-control mb-3" placeholder="Your Name">
+      <input type="email" class="form-control mb-3" placeholder="Your Email">
+      <textarea class="form-control mb-3" placeholder="Message"></textarea>
+      <button class="btn btn-dark w-100">Submit</button>
+    </form>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="offerModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>Special Offer</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        Get up to 25% discount on selected laptops.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-center py-3">
+  © 2026 Laptop World | Bootstrap Project
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
