@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TravelVista – Explore The World</title>
+  <meta name="description" content="Discover breathtaking destinations with TravelVista. Adventure, beach, and cultural tours await you."/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary: #6c63ff;
+      --accent:  #ff6584;
+      --dark:    #0f0e17;
+      --card-bg: #1a1a2e;
+    }
+    * { font-family: 'Outfit', sans-serif; }
+    body { background: var(--dark); color: #eee; }
+
+    /* ── Navbar ── */
+    .navbar { background: rgba(15,14,23,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(108,99,255,0.25); }
+    .navbar-brand span { color: var(--primary); }
+    .nav-link { color: #ccc !important; transition: color .3s; }
+    .nav-link:hover { color: var(--primary) !important; }
+    .btn-nav { background: var(--primary); color: #fff !important; border-radius: 50px; padding: 6px 20px; }
+    .btn-nav:hover { background: var(--accent); }
+
+    /* ── Carousel ── */
+    .carousel-item img { height: 520px; object-fit: cover; filter: brightness(.75); }
+    .carousel-caption h2 { font-size: 2.8rem; font-weight: 900; text-shadow: 0 2px 12px rgba(0,0,0,.6); }
+    .carousel-caption p  { font-size: 1.1rem; }
+
+    /* ── Section titles ── */
+    .section-title { font-weight: 700; font-size: 2rem; position: relative; display: inline-block; }
+    .section-title::after { content:''; display:block; height:4px; width:60px; background: linear-gradient(90deg,var(--primary),var(--accent)); border-radius:4px; margin-top:6px; }
+
+    /* ── Cards ── */
+    .dest-card { background: var(--card-bg); border: 1px solid rgba(108,99,255,0.2); border-radius: 18px; overflow: hidden; transition: transform .35s, box-shadow .35s; }
+    .dest-card:hover { transform: translateY(-8px); box-shadow: 0 16px 48px rgba(108,99,255,0.35); }
+    .dest-card img { height: 210px; object-fit: cover; width: 100%; }
+    .dest-card .badge-cat { background: var(--primary); font-size: .72rem; border-radius: 50px; padding: 4px 12px; }
+    .dest-card .card-title { font-weight: 700; color: #fff; }
+    .dest-card .card-text  { color: #aaa; font-size: .9rem; }
+    .dest-card .stars { color: #ffc107; font-size: .85rem; }
+
+    /* ── Stats strip ── */
+    .stats-strip { background: linear-gradient(135deg, #6c63ff22, #ff658422); border: 1px solid rgba(108,99,255,0.2); border-radius: 18px; }
+    .stat-num { font-size: 2.4rem; font-weight: 900; color: var(--primary); }
+
+    /* ── CTA ── */
+    .cta-section { background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 24px; }
+
+    /* ── Footer ── */
+    footer { background: #090912; border-top: 1px solid rgba(108,99,255,0.2); }
+    footer a { color: #888; text-decoration: none; transition: color .3s; }
+    footer a:hover { color: var(--primary); }
+    .social-icon { width: 38px; height: 38px; border-radius: 50%; background: rgba(108,99,255,0.15); display: inline-flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1rem; transition: background .3s; }
+    .social-icon:hover { background: var(--primary); color: #fff; }
+
+    /* ── Buttons polish ── */
+    .btn-primary-custom { background: var(--primary); border: none; border-radius: 50px; padding: 10px 28px; font-weight: 600; color: #fff; transition: background .3s, transform .2s; }
+    .btn-primary-custom:hover { background: #5548e0; transform: scale(1.04); }
+    .btn-outline-custom { border: 2px solid var(--primary); border-radius: 50px; padding: 10px 28px; font-weight: 600; color: var(--primary); background: transparent; transition: all .3s; }
+    .btn-outline-custom:hover { background: var(--primary); color: #fff; }
+    .btn-accent { background: var(--accent); border: none; border-radius: 50px; padding: 10px 28px; font-weight: 600; color: #fff; transition: background .3s; }
+    .btn-accent:hover { background: #e04f6e; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════════════ -->
+<nav class="navbar navbar-expand-lg sticky-top py-3">
+  <div class="container">
+    <a class="navbar-brand fw-black fs-4 text-white" href="#" id="brand-logo">
+      <i class="fa fa-globe me-2" style="color:var(--primary)"></i>Travel<span>Vista</span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto gap-2 align-items-center">
+        <li class="nav-item"><a class="nav-link" href="#destinations" id="nav-dest">Destinations</a></li>
+        <li class="nav-item"><a class="nav-link" href="#packages"     id="nav-pkg">Packages</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about"        id="nav-about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact"      id="nav-contact">Contact</a></li>
+        <li class="nav-item"><a class="nav-link btn-nav" href="#book" id="nav-book">Book Now</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════
+     CAROUSEL
+════════════════════════════════════════════════ -->
+<section id="hero">
+  <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="carousel1.png" class="d-block w-100" alt="Tropical Beach Paradise"/>
+        <div class="carousel-caption d-none d-md-block pb-5">
+          <h2>Tropical Paradise Awaits</h2>
+          <p>Sun, sand, and crystal-clear waters — your dream escape is one click away.</p>
+          <a href="#book" class="btn btn-primary-custom mt-2" id="carousel-cta-1">Explore Now</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="carousel2.png" class="d-block w-100" alt="Mountain Adventure"/>
+        <div class="carousel-caption d-none d-md-block pb-5">
+          <h2>Conquer The Mountains</h2>
+          <p>Breathtaking peaks, serene valleys — nature at its most magnificent.</p>
+          <a href="#book" class="btn btn-primary-custom mt-2" id="carousel-cta-2">Plan Your Trek</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="carousel3.png" class="d-block w-100" alt="City Lights"/>
+        <div class="carousel-caption d-none d-md-block pb-5">
+          <h2>City Lights & Culture</h2>
+          <p>Vibrant metropolises full of art, food, and unforgettable nightlife.</p>
+          <a href="#book" class="btn btn-primary-custom mt-2" id="carousel-cta-3">Discover Cities</a>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     STATS STRIP  (Grid System)
+════════════════════════════════════════════════ -->
+<section class="py-5 px-3">
+  <div class="container">
+    <div class="stats-strip p-4">
+      <div class="row text-center g-4">
+        <div class="col-6 col-md-3" id="stat-destinations">
+          <div class="stat-num">120+</div>
+          <div class="text-secondary">Destinations</div>
+        </div>
+        <div class="col-6 col-md-3" id="stat-travelers">
+          <div class="stat-num">50K+</div>
+          <div class="text-secondary">Happy Travelers</div>
+        </div>
+        <div class="col-6 col-md-3" id="stat-packages">
+          <div class="stat-num">300+</div>
+          <div class="text-secondary">Tour Packages</div>
+        </div>
+        <div class="col-6 col-md-3" id="stat-rating">
+          <div class="stat-num">4.9★</div>
+          <div class="text-secondary">Average Rating</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     DESTINATION CARDS  (Grid + Cards + Buttons)
+════════════════════════════════════════════════ -->
+<section id="destinations" class="py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title mx-auto d-block" style="display:inline-block">Top Destinations</h2>
+      <p class="text-secondary mt-3">Hand-picked places for every kind of traveller</p>
+    </div>
+    <div class="row g-4">
+      <!-- Card 1 -->
+      <div class="col-12 col-md-6 col-lg-4" id="card-adventure">
+        <div class="dest-card h-100">
+          <img src="card1.png" alt="Adventure Mountains"/>
+          <div class="p-4">
+            <span class="badge badge-cat mb-2">Adventure</span>
+            <h5 class="card-title">Himalayan Trek</h5>
+            <p class="card-text">An epic 14-day high-altitude trek through some of the world's most dramatic scenery.</p>
+            <div class="stars mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> 4.8</div>
+            <div class="d-flex align-items-center justify-content-between">
+              <span class="fw-bold text-white fs-5">$1,299</span>
+              <button class="btn btn-primary-custom btn-sm" id="book-adventure">Book Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="col-12 col-md-6 col-lg-4" id="card-beach">
+        <div class="dest-card h-100">
+          <img src="card2.png" alt="Beach Vacation"/>
+          <div class="p-4">
+            <span class="badge badge-cat mb-2">Beach</span>
+            <h5 class="card-title">Maldives Escape</h5>
+            <p class="card-text">Overwater bungalows, vibrant coral reefs, and unmatched tranquility in the Indian Ocean.</p>
+            <div class="stars mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 5.0</div>
+            <div class="d-flex align-items-center justify-content-between">
+              <span class="fw-bold text-white fs-5">$2,499</span>
+              <button class="btn btn-primary-custom btn-sm" id="book-beach">Book Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="col-12 col-md-6 col-lg-4" id="card-culture">
+        <div class="dest-card h-100">
+          <img src="card3.png" alt="Cultural Tour"/>
+          <div class="p-4">
+            <span class="badge badge-cat mb-2">Culture</span>
+            <h5 class="card-title">Ancient Wonders Tour</h5>
+            <p class="card-text">Journey through millennia of history — temples, monuments, and living traditions.</p>
+            <div class="stars mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> 4.7</div>
+            <div class="d-flex align-items-center justify-content-between">
+              <span class="fw-bold text-white fs-5">$999</span>
+              <button class="btn btn-primary-custom btn-sm" id="book-culture">Book Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-5">
+      <button class="btn btn-outline-custom me-3" id="btn-view-all">View All Destinations</button>
+      <button class="btn btn-accent"              id="btn-custom-tour">Plan Custom Tour</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     PACKAGES GRID
+════════════════════════════════════════════════ -->
+<section id="packages" class="py-5" style="background:rgba(108,99,255,0.05)">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title mx-auto d-block" style="display:inline-block">Tour Packages</h2>
+      <p class="text-secondary mt-3">Simple pricing. Unforgettable experiences.</p>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-12 col-md-4" id="pkg-basic">
+        <div class="dest-card p-4 text-center h-100">
+          <i class="fas fa-map-marker-alt fa-2x mb-3" style="color:var(--primary)"></i>
+          <h5 class="card-title">Explorer</h5>
+          <div class="stat-num my-2">$499</div>
+          <p class="card-text">5-day guided tour, accommodation, breakfast included.</p>
+          <button class="btn btn-outline-custom w-100 mt-3" id="pkg-basic-btn">Choose Plan</button>
+        </div>
+      </div>
+      <div class="col-12 col-md-4" id="pkg-premium">
+        <div class="dest-card p-4 text-center h-100" style="border-color:var(--primary);box-shadow:0 0 32px rgba(108,99,255,0.3)">
+          <span class="badge bg-warning text-dark mb-2">Most Popular</span><br/>
+          <i class="fas fa-crown fa-2x mb-3" style="color:#ffc107"></i>
+          <h5 class="card-title">Premium</h5>
+          <div class="stat-num my-2">$1,299</div>
+          <p class="card-text">12-day luxury tour, 5-star hotels, all meals, private transfers.</p>
+          <button class="btn btn-primary-custom w-100 mt-3" id="pkg-premium-btn">Choose Plan</button>
+        </div>
+      </div>
+      <div class="col-12 col-md-4" id="pkg-elite">
+        <div class="dest-card p-4 text-center h-100">
+          <i class="fas fa-gem fa-2x mb-3" style="color:var(--accent)"></i>
+          <h5 class="card-title">Elite</h5>
+          <div class="stat-num my-2" style="color:var(--accent)">$2,999</div>
+          <p class="card-text">21-day bespoke journey, private guide, exclusive experiences.</p>
+          <button class="btn btn-accent w-100 mt-3" id="pkg-elite-btn">Choose Plan</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CTA SECTION
+════════════════════════════════════════════════ -->
+<section id="book" class="py-5">
+  <div class="container">
+    <div class="cta-section text-center text-white p-5">
+      <h2 class="fw-bold mb-3" style="font-size:2.2rem">Ready For Your Next Adventure?</h2>
+      <p class="mb-4 opacity-90">Join 50,000+ travellers who trust TravelVista. Book today and get 15% off your first trip.</p>
+      <div class="d-flex flex-wrap gap-3 justify-content-center">
+        <button class="btn btn-light text-primary fw-bold rounded-pill px-4" id="cta-book-btn">Book Now — 15% Off</button>
+        <button class="btn btn-outline-light rounded-pill px-4"              id="cta-learn-btn">Learn More</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════ -->
+<footer id="contact" class="py-5">
+  <div class="container">
+    <div class="row g-4">
+      <!-- Brand -->
+      <div class="col-12 col-md-4" id="footer-brand">
+        <h5 class="text-white fw-bold mb-3"><i class="fa fa-globe me-2" style="color:var(--primary)"></i>TravelVista</h5>
+        <p class="text-secondary" style="font-size:.9rem">Making travel dreams a reality since 2015. Explore more, worry less.</p>
+        <div class="d-flex gap-2 mt-3">
+          <a href="#" class="social-icon" id="social-fb"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon" id="social-ig"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon" id="social-tw"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon" id="social-yt"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <!-- Quick Links -->
+      <div class="col-6 col-md-2" id="footer-links">
+        <h6 class="text-white fw-semibold mb-3">Quick Links</h6>
+        <ul class="list-unstyled" style="font-size:.9rem">
+          <li class="mb-2"><a href="#destinations">Destinations</a></li>
+          <li class="mb-2"><a href="#packages">Packages</a></li>
+          <li class="mb-2"><a href="#book">Book Now</a></li>
+          <li class="mb-2"><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <!-- Support -->
+      <div class="col-6 col-md-2" id="footer-support">
+        <h6 class="text-white fw-semibold mb-3">Support</h6>
+        <ul class="list-unstyled" style="font-size:.9rem">
+          <li class="mb-2"><a href="#">FAQ</a></li>
+          <li class="mb-2"><a href="#">Privacy Policy</a></li>
+          <li class="mb-2"><a href="#">Terms of Use</a></li>
+          <li class="mb-2"><a href="#">Cancellations</a></li>
+        </ul>
+      </div>
+      <!-- Newsletter -->
+      <div class="col-12 col-md-4" id="footer-newsletter">
+        <h6 class="text-white fw-semibold mb-3">Stay Updated</h6>
+        <p class="text-secondary" style="font-size:.9rem">Get exclusive deals directly in your inbox.</p>
+        <div class="input-group mt-2">
+          <input type="email" class="form-control bg-transparent text-white border-secondary" placeholder="your@email.com" id="newsletter-email"/>
+          <button class="btn btn-primary-custom" id="newsletter-btn">Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <hr class="border-secondary mt-5"/>
+    <p class="text-center text-secondary mb-0" style="font-size:.85rem">© 2026 TravelVista. All rights reserved. Crafted with <i class="fas fa-heart" style="color:var(--accent)"></i> for wanderers.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
