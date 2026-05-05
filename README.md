@@ -42,4 +42,5 @@ Aim: Create an image gallery webpage using External CSS with hover effects, grad
 
 
 Practical No. 9
+
 Aim: Design a responsive webpage using CSS3 features such as multiple columns, fonts. icons, animations, and transformations.
