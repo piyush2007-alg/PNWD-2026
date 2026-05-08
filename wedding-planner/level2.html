@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Timeless Treasure Weddings - Bespoke luxury wedding planning tailored to your unique love story.">
+    <title>Timeless Treasure Weddings | Luxury Wedding Planner</title>
+
+    <!-- Google Fonts (External) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS (External Framework) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons (External) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- External CSS: Our custom stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Internal CSS: Animations, Quote Banner & Page-specific styles -->
+    <style>
+        /* ===== KEYFRAME ANIMATIONS ===== */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        /* Apply animations to hero elements */
+        #hero h1 {
+            animation: fadeInDown 0.9s ease both;
+        }
+
+        #hero p {
+            animation: fadeInUp 1.1s ease 0.3s both;
+        }
+
+        #hero .btn-gold {
+            animation: fadeInUp 1.2s ease 0.5s both;
+        }
+
+        /* ===== QUOTE BANNER (Internal CSS) ===== */
+        .quote-banner {
+            background: linear-gradient(135deg, #5c3d2e 0%, #8b5e3c 100%);
+            color: #fdf5e6;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .quote-banner blockquote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            font-style: italic;
+            max-width: 700px;
+            margin: 0 auto 1rem;
+            line-height: 1.7;
+        }
+
+        .quote-banner cite {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            color: #c9a96e;
+            font-style: normal;
+        }
+
+        .quote-banner .bi-heart-fill {
+            color: #c9a96e;
+            animation: pulse 2s infinite;
+            margin: 0 0.4rem;
+        }
+
+        /* ===== HERO BACKGROUND IMAGE ===== */
+        #hero {
+            min-height: 100vh;
+            background-image:
+                linear-gradient(135deg, rgba(30, 10, 5, 0.55) 0%, rgba(92, 61, 46, 0.45) 100%),
+                url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1600&q=90');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+        }
+
+        #hero h1 {
+            color: #ffffff !important;
+            text-shadow: 2px 4px 20px rgba(0, 0, 0, 0.5);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+        }
+
+        #hero p {
+            color: #f5e6d8;
+            font-size: 1.15rem;
+            max-width: 640px;
+            margin: 1.2rem auto;
+        }
+
+        /* ===== SCROLL PROGRESS BAR ===== */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            width: 0%;
+            background: linear-gradient(90deg, #c9a96e, #a07840);
+            z-index: 9999;
+            transition: width 0.1s linear;
+        }
+
+        /* ===== STATS COUNTER SECTION ===== */
+        .stats-section {
+            background: linear-gradient(135deg, #5c3d2e 0%, #8b5e3c 100%);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .stat-item {
+            color: #fdf5e6;
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 600;
+            color: #c9a96e;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #f0dfc8;
+        }
+
+        /* ===== FAQ - HTML5 details/summary ===== */
+        #faq {
+            padding: 60px 20px;
+            background: #fff9f5;
+        }
+
+        .faq-item {
+            border: 1.5px solid #e8dacb;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 6px 20px rgba(92, 61, 46, 0.12);
+        }
+
+        .faq-item summary {
+            padding: 1.1rem 1.5rem;
+            cursor: pointer;
+            font-weight: 700;
+            color: #5c3d2e;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fffdf9;
+            user-select: none;
+        }
+
+        .faq-item summary::after {
+            content: '\002B';
+            font-size: 1.4rem;
+            color: #c9a96e;
+            transition: transform 0.3s;
+        }
+
+        .faq-item[open] summary::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-item .faq-body {
+            padding: 1rem 1.5rem 1.2rem;
+            color: #7a5c45;
+            line-height: 1.8;
+            font-size: 0.97rem;
+            background: #ffffff;
+        }
+
+        /* ===== DIALOG MODAL ===== */
+        dialog {
+            border: none;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            max-width: 440px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+            text-align: center;
+        }
+
+        dialog::backdrop {
+            background: rgba(30, 10, 5, 0.6);
+        }
+
+        .dialog-icon {
+            font-size: 3rem;
+            color: #c9a96e;
+            margin-bottom: 1rem;
+        }
+
+        .dialog-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #5c3d2e;
+            margin-bottom: 0.5rem;
+        }
+
+        .dialog-msg {
+            color: #7a5c45;
+            margin-bottom: 1.5rem;
+            font-size: 0.97rem;
+        }
+
+        .dialog-close {
+            background: linear-gradient(135deg, #c9a96e, #a07840);
+            color: #fff;
+            border: none;
+            padding: 0.65rem 2rem;
+            border-radius: 25px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* ===== BACK TO TOP BUTTON ===== */
+        #backToTop {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, #c9a96e, #a07840);
+            color: #fff;
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(92, 61, 46, 0.35);
+            z-index: 999;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        #backToTop:hover {
+            transform: translateY(-4px);
+        }
+
+        /* ===== SCROLL-REVEAL ANIMATION ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== NAVBAR SHRINK ON SCROLL ===== */
+        .navbar-shrink {
+            padding-top: 0.3rem !important;
+            padding-bottom: 0.3rem !important;
+            box-shadow: 0 4px 20px rgba(92, 61, 46, 0.4) !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== SCROLL PROGRESS BAR (Advanced HTML5) ===== -->
+    <div id="scroll-progress"></div>
+
+    <!-- ===== BACK TO TOP BUTTON ===== -->
+    <button id="backToTop" title="Back to Top" aria-label="Back to top">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- ===== CONFIRMATION DIALOG (HTML5 <dialog>) ===== -->
+    <dialog id="confirmDialog">
+        <div class="dialog-icon"><i class="bi bi-envelope-heart-fill"></i></div>
+        <p class="dialog-title">Inquiry Sent!</p>
+        <p class="dialog-msg">Thank you for reaching out. Our team will contact you within 24 hours to begin crafting
+            your perfect day.</p>
+        <button class="dialog-close" id="closeDialog">&#10022; Close</button>
+    </dialog>
+
+    <!-- ===== BOOTSTRAP NAVBAR ===== -->
+    <header>
+        <nav class="navbar navbar-expand-lg site-navbar" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand-title" href="#hero">&#10022; Timeless Treasure Weddings</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+                    aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#services">Our Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#why-us">Why Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#testimonials">Reviews</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#location">Find Studio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#inquiry">Inquire Now</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main>
+
+        <!-- ===== HERO SECTION (Background Image) ===== -->
+        <section id="hero">
+            <div class="container">
+                <!-- Inline CSS: text-shadow on heading -->
+                <h1 style="text-shadow: 2px 4px 20px rgba(0,0,0,0.5);">Crafting Your Unforgettable Day</h1>
+                <p style="color: #f5e6d8; font-size: 1.15rem; max-width: 640px; margin: 1.2rem auto;">
+                    Discover a luxurious, bespoke wedding planning experience tailored exclusively to your unique love
+                    story.<br>We handle every exquisite detail, so you can simply cherish the moment.
+                </p>
+                <!-- Inline CSS: margin-top on button -->
+                <a href="#inquiry" class="btn-gold" style="margin-top: 2rem;">&#10022; Begin Your Journey</a>
+            </div>
+        </section>
+
+        <!-- ===== QUOTE BANNER (styled by Internal CSS) ===== -->
+        <div class="quote-banner">
+            <blockquote>
+                &ldquo;Love is not just looking at each other, it&rsquo;s looking in the same direction.&rdquo;
+            </blockquote>
+            <cite>
+                <i class="bi bi-heart-fill"></i>
+                &mdash; Antoine de Saint-Exup&eacute;ry
+                <i class="bi bi-heart-fill"></i>
+            </cite>
+        </div>
+
+        <!-- ===== SERVICES SECTION ===== -->
+        <section id="services">
+            <div class="container text-center">
+                <!-- Inline CSS: letter-spacing -->
+                <h2 class="section-title" style="letter-spacing: 1.5px;">The Journey to &ldquo;I Do&rdquo;</h2>
+                <hr class="gold-divider">
+                <p class="section-subtitle">A Timeline of Our Services</p>
+
+                <!-- Bootstrap Grid Cards -->
+                <div class="row g-4 mt-2">
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="phase-card">
+                            <div class="phase-icon"><i class="bi bi-chat-heart"></i></div>
+                            <span class="phase-badge">Phase 1</span>
+                            <h3>Initial Consultation</h3>
+                            <p>We begin by understanding your vision, aesthetic, and expectations over a delightful cup
+                                of artisan coffee.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="phase-card">
+                            <div class="phase-icon"><i class="bi bi-palette2"></i></div>
+                            <span class="phase-badge">Phase 2</span>
+                            <h3>Concept &amp; Design</h3>
+                            <p>Our team curates elegant mood boards, distinct color palettes, and selects the perfect
+                                venues to bring your concept to life.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="phase-card">
+                            <div class="phase-icon"><i class="bi bi-people"></i></div>
+                            <span class="phase-badge">Phase 3</span>
+                            <h3>Vendor Curation</h3>
+                            <p>We leverage our exclusive network to connect you with top-tier florists, visionary
+                                photographers, and gourmet caterers.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="phase-card">
+                            <div class="phase-icon"><i class="bi bi-stars"></i></div>
+                            <span class="phase-badge">Phase 4</span>
+                            <h3>Flawless Execution</h3>
+                            <p>Complete coordination and seamless execution on your big day, ensuring absolute peace of
+                                mind and boundless joy.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== WHY CHOOSE US (Bootstrap Cards + Grid) ===== -->
+        <!-- Inline CSS: section background gradient -->
+        <section id="why-us" style="padding: 60px 20px; background: linear-gradient(180deg, #fdf5e6, #f5e6e0);">
+            <div class="container text-center">
+                <h2 class="section-title" style="letter-spacing: 1px;">Why Choose Us</h2>
+                <hr class="gold-divider">
+                <p class="section-subtitle">We go beyond planning &mdash; we craft memories</p>
+                <div class="row g-4 mt-2">
+                    <div class="col-12 col-sm-6 col-md-4">
+                        <div class="card h-100 why-card" style="border: 1.5px solid #e8dacb; border-radius: 16px;">
+                            <div class="card-body" style="padding: 2rem 1.5rem;">
+                                <div class="phase-icon"><i class="bi bi-award"></i></div>
+                                <h5 class="card-title"
+                                    style="font-family: 'Cormorant Garamond', serif; color: #5c3d2e; font-size: 1.3rem;">
+                                    Award-Winning Team</h5>
+                                <p class="card-text" style="color: #7a5c45; font-size: 0.95rem;">Recognised nationally
+                                    for excellence in luxury wedding design and flawless event execution.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4">
+                        <div class="card h-100 why-card" style="border: 1.5px solid #e8dacb; border-radius: 16px;">
+                            <div class="card-body" style="padding: 2rem 1.5rem;">
+                                <div class="phase-icon"><i class="bi bi-gem"></i></div>
+                                <h5 class="card-title"
+                                    style="font-family: 'Cormorant Garamond', serif; color: #5c3d2e; font-size: 1.3rem;">
+                                    Luxury Experience</h5>
+                                <p class="card-text" style="color: #7a5c45; font-size: 0.95rem;">Every detail is curated
+                                    with elegance &mdash; from bespoke florals to fine dining and exclusive venues.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4">
+                        <div class="card h-100 why-card" style="border: 1.5px solid #e8dacb; border-radius: 16px;">
+                            <div class="card-body" style="padding: 2rem 1.5rem;">
+                                <div class="phase-icon"><i class="bi bi-shield-check"></i></div>
+                                <h5 class="card-title"
+                                    style="font-family: 'Cormorant Garamond', serif; color: #5c3d2e; font-size: 1.3rem;">
+                                    Stress-Free Planning</h5>
+                                <p class="card-text" style="color: #7a5c45; font-size: 0.95rem;">We handle every vendor,
+                                    timeline, and detail so you can focus on enjoying your special day.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4">
+                        <div class="card h-100 why-card" style="border: 1.5px solid #e8dacb; border-radius: 16px;">
+                            <div class="card-body" style="padding: 2rem 1.5rem;">
+                                <div class="phase-icon"><i class="bi bi-camera"></i></div>
+                                <h5 class="card-title"
+                                    style="font-family: 'Cormorant Garamond', serif; color: #5c3d2e; font-size: 1.3rem;">
+                                    Top Photographers</h5>
+                                <p class="card-text" style="color: #7a5c45; font-size: 0.95rem;">Partnered with
+                                    award-winning photographers to capture every precious moment beautifully.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4">
+                        <div class="card h-100 why-card" style="border: 1.5px solid #e8dacb; border-radius: 16px;">
+                            <div class="card-body" style="padding: 2rem 1.5rem;">
+                                <div class="phase-icon"><i class="bi bi-heart"></i></div>
+                                <h5 class="card-title"
+                                    style="font-family: 'Cormorant Garamond', serif; color: #5c3d2e; font-size: 1.3rem;">
+                                    Personalised Themes</h5>
+                                <p class="card-text" style="color: #7a5c45; font-size: 0.95rem;">Your wedding, your way
+                                    &mdash; fully customised themes that reflect your unique love story.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4">
+                        <div class="card h-100 why-card" style="border: 1.5px solid #e8dacb; border-radius: 16px;">
+                            <div class="card-body" style="padding: 2rem 1.5rem;">
+                                <div class="phase-icon"><i class="bi bi-clock-history"></i></div>
+                                <h5 class="card-title"
+                                    style="font-family: 'Cormorant Garamond', serif; color: #5c3d2e; font-size: 1.3rem;">
+                                    10+ Years Experience</h5>
+                                <p class="card-text" style="color: #7a5c45; font-size: 0.95rem;">Over a decade of
+                                    crafting dream weddings across India and internationally.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FIND OUR STUDIO — Google Maps iframe ===== -->
+        <section id="location" style="padding: 60px 20px; background: linear-gradient(180deg,#fdf5e6,#f5e6e0);">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-title" style="letter-spacing:1px;">Find Our Studio</h2>
+                    <hr class="gold-divider">
+                    <p class="section-subtitle">Visit us &mdash; we would love to meet you in person</p>
+                </div>
+                <div class="row g-4 align-items-center mt-2 reveal">
+                    <!-- Contact Info Column -->
+                    <div class="col-12 col-lg-4">
+                        <div
+                            style="background:#fff; border-radius:18px; padding:2rem; border:1.5px solid #e8dacb; box-shadow:0 6px 24px rgba(92,61,46,0.1);">
+                            <h4
+                                style="font-family:'Cormorant Garamond',serif; color:#5c3d2e; font-size:1.5rem; margin-bottom:1.2rem;">
+                                <i class="bi bi-geo-alt-fill" style="color:#c9a96e;"></i> Our Office
+                            </h4>
+                            <p style="color:#7a5c45; line-height:1.8; margin-bottom:1rem;">
+                                <strong>Timeless Treasure Weddings</strong><br>
+                                402, Pearl Plaza, Marine Drive,<br>
+                                Mumbai, Maharashtra &mdash; 400020
+                            </p>
+                            <p style="color:#7a5c45; margin-bottom:0.6rem;">
+                                <i class="bi bi-telephone-fill" style="color:#c9a96e;"></i>
+                                &nbsp;<a href="tel:+912212345678" style="color:#a07840; text-decoration:none;">+91 22
+                                    1234 5678</a>
+                            </p>
+                            <p style="color:#7a5c45; margin-bottom:0.6rem;">
+                                <i class="bi bi-envelope-fill" style="color:#c9a96e;"></i>
+                                &nbsp;<a href="mailto:hello@timelessweddings.com"
+                                    style="color:#a07840; text-decoration:none;">hello@timelessweddings.com</a>
+                            </p>
+                            <p style="color:#7a5c45;">
+                                <i class="bi bi-clock-fill" style="color:#c9a96e;"></i>
+                                &nbsp;Mon &ndash; Sat: 10:00 AM &ndash; 7:00 PM
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Google Maps iframe Column -->
+                    <div class="col-12 col-lg-8">
+                        <div
+                            style="border-radius:18px; overflow:hidden; border:3px solid #c9a96e; box-shadow:0 12px 36px rgba(92,61,46,0.18);">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.908!2d72.8231!3d18.9322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7d1e000000001%3A0x0!2sMarine+Drive%2C+Mumbai%2C+Maharashtra!5e0!3m2!1sen!2sin!4v1600000000000"
+                                width="100%" height="380" style="border:0; display:block;" allowfullscreen=""
+                                loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                                title="Timeless Treasure Weddings Studio Location">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== GALLERY SECTION ===== -->
+        <!-- Inline CSS: section background -->
+        <section id="gallery" style="padding: 60px 20px; background: #fff9f5;">
+            <div class="container text-center">
+                <h2 class="section-title" style="letter-spacing: 1px;">Our Wedding Gallery</h2>
+                <hr class="gold-divider">
+                <p class="section-subtitle">A glimpse of love stories we have crafted</p>
+                <div class="row g-3 mt-2">
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80"
+                            alt="Beautiful Wedding Couple" class="gallery-img"
+                            style="width: 100%; height: 220px; object-fit: cover; border-radius: 14px; border: 3px solid #c9a96e; transition: transform 0.3s, box-shadow 0.3s;">
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80"
+                            alt="Grand Ballroom Reception" class="gallery-img"
+                            style="width: 100%; height: 220px; object-fit: cover; border-radius: 14px; border: 3px solid #c9a96e; transition: transform 0.3s, box-shadow 0.3s;">
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=600&q=80"
+                            alt="Elegant Candlelit Table Setting" class="gallery-img"
+                            style="width: 100%; height: 220px; object-fit: cover; border-radius: 14px; border: 3px solid #c9a96e; transition: transform 0.3s, box-shadow 0.3s;">
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?auto=format&fit=crop&w=600&q=80"
+                            alt="Outdoor Luxury Ceremony" class="gallery-img"
+                            style="width: 100%; height: 220px; object-fit: cover; border-radius: 14px; border: 3px solid #c9a96e; transition: transform 0.3s, box-shadow 0.3s;">
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=600&q=80"
+                            alt="Lavish Wedding Venue" class="gallery-img"
+                            style="width: 100%; height: 220px; object-fit: cover; border-radius: 14px; border: 3px solid #c9a96e; transition: transform 0.3s, box-shadow 0.3s;">
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <img src="https://images.unsplash.com/photo-1550005809-91ad75fb315f?auto=format&fit=crop&w=600&q=80"
+                            alt="Opulent Wedding Hall" class="gallery-img"
+                            style="width: 100%; height: 220px; object-fit: cover; border-radius: 14px; border: 3px solid #c9a96e; transition: transform 0.3s, box-shadow 0.3s;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TESTIMONIALS SECTION ===== -->
+        <!-- Inline CSS: section background -->
+        <section id="testimonials" style="padding: 60px 20px; background: linear-gradient(135deg, #fdf5e6, #f5e6e0);">
+            <div class="container text-center">
+                <h2 class="section-title" style="letter-spacing: 1px;">What Our Couples Say</h2>
+                <hr class="gold-divider">
+                <p class="section-subtitle">Real love stories, real experiences</p>
+                <div class="row g-4 mt-2">
+                    <div class="col-12 col-md-4">
+                        <div class="testimonial-card"
+                            style="background: #fff; border-radius: 18px; padding: 2rem; border: 1.5px solid #e8dacb; box-shadow: 0 4px 18px rgba(92,61,46,0.08); height: 100%;">
+                            <div style="color: #c9a96e; font-size: 1.4rem; margin-bottom: 0.8rem;">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i>
+                            </div>
+                            <p
+                                style="font-style: italic; color: #5c3d2e; font-size: 0.97rem; line-height: 1.7; margin-bottom: 1rem;">
+                                &ldquo;Timeless Treasure made our wedding absolutely magical. Every detail was perfect
+                                beyond our imagination!&rdquo;</p>
+                            <strong style="color: #a07840; font-size: 0.9rem;">&mdash; Priya &amp; Rahul,
+                                Mumbai</strong>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="testimonial-card"
+                            style="background: #fff; border-radius: 18px; padding: 2rem; border: 1.5px solid #e8dacb; box-shadow: 0 4px 18px rgba(92,61,46,0.08); height: 100%;">
+                            <div style="color: #c9a96e; font-size: 1.4rem; margin-bottom: 0.8rem;">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i>
+                            </div>
+                            <p
+                                style="font-style: italic; color: #5c3d2e; font-size: 0.97rem; line-height: 1.7; margin-bottom: 1rem;">
+                                &ldquo;We were completely stress-free on our big day. The team handled everything with
+                                grace and professionalism.&rdquo;</p>
+                            <strong style="color: #a07840; font-size: 0.9rem;">&mdash; Anjali &amp; Vikram,
+                                Delhi</strong>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="testimonial-card"
+                            style="background: #fff; border-radius: 18px; padding: 2rem; border: 1.5px solid #e8dacb; box-shadow: 0 4px 18px rgba(92,61,46,0.08); height: 100%;">
+                            <div style="color: #c9a96e; font-size: 1.4rem; margin-bottom: 0.8rem;">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-half"></i>
+                            </div>
+                            <p
+                                style="font-style: italic; color: #5c3d2e; font-size: 0.97rem; line-height: 1.7; margin-bottom: 1rem;">
+                                &ldquo;The floral arrangements and venue setup were breathtaking. Our guests are still
+                                talking about it!&rdquo;</p>
+                            <strong style="color: #a07840; font-size: 0.9rem;">&mdash; Sneha &amp; Arjun, Pune</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ANIMATED STATS (Advanced HTML5 + JS) ===== -->
+        <section class="stats-section reveal">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-6 col-md-3 stat-item">
+                        <span class="stat-number" data-target="350">0</span>
+                        <span class="stat-label">Weddings Planned</span>
+                    </div>
+                    <div class="col-6 col-md-3 stat-item">
+                        <span class="stat-number" data-target="12">0</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="col-6 col-md-3 stat-item">
+                        <span class="stat-number" data-target="98">0</span>
+                        <span class="stat-label">% Happy Couples</span>
+                    </div>
+                    <div class="col-6 col-md-3 stat-item">
+                        <span class="stat-number" data-target="40">0</span>
+                        <span class="stat-label">Cities Covered</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FAQ SECTION — HTML5 <details> & <summary> ===== -->
+        <section id="faq" class="reveal">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-title" style="letter-spacing:1px;">Frequently Asked Questions</h2>
+                    <hr class="gold-divider">
+                    <p class="section-subtitle">Everything you need to know before your big day</p>
+                </div>
+                <div style="max-width:750px; margin:0 auto;">
+
+                    <details class="faq-item">
+                        <summary>How far in advance should I book your services?</summary>
+                        <div class="faq-body">We recommend booking at least 12&ndash;18 months in advance for premium
+                            dates. However, we also accommodate shorter timelines depending on availability. Contact us
+                            early to secure your preferred date.</div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>What packages do you offer?</summary>
+                        <div class="faq-body">We offer three bespoke packages &mdash; <strong>Silver Elegance</strong>,
+                            <strong>Gold Prestige</strong>, and <strong>Platinum Royale</strong>. Each is fully
+                            customisable to match your vision and budget.</div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>Do you handle destination weddings?</summary>
+                        <div class="faq-body">Absolutely! We have successfully planned luxurious destination weddings
+                            across Goa, Jaipur, Udaipur, Dubai, and Bali. Our team manages all logistics, travel, and
+                            on-site coordination.</div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>Can we customise the décor and theme?</summary>
+                        <div class="faq-body">Yes &mdash; every wedding we plan is 100% unique. From colour palettes and
+                            floral arrangements to lighting and table settings, everything is curated exclusively around
+                            your personal style.</div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>What is your cancellation policy?</summary>
+                        <div class="faq-body">We understand that plans can change. Our flexible cancellation policy
+                            varies by package and timeline. Full details are provided in your personalised contract upon
+                            booking.</div>
+                    </details>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Inquiry Form Section -->
+        <section id="inquiry">
+            <div class="container">
+                <div class="text-center">
+                    <!-- Inline CSS: margin-bottom on heading -->
+                    <h2 class="section-title" style="margin-bottom: 0.5rem;">Begin Your Story</h2>
+                    <hr class="gold-divider">
+                    <p class="section-subtitle">Fill in your details below to initiate a private consultation.</p>
+                </div>
+
+                <div class="form-wrapper reveal">
+                    <form action="#" method="POST" id="inquiryForm" novalidate>
+                        <div class="mb-3">
+                            <label for="fullName" class="form-label">Full Name</label>
+                            <input type="text" id="fullName" name="fullName" class="form-control"
+                                placeholder="e.g. Jane Doe" required autocomplete="name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="emailAddress" class="form-label">Email Address</label>
+                            <input type="email" id="emailAddress" name="emailAddress" class="form-control"
+                                placeholder="jane.doe@example.com" required autocomplete="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="phoneNumber" class="form-label">Phone Number</label>
+                            <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control"
+                                placeholder="+91 98765 43210" pattern="[0-9+\-\s]{7,15}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="weddingDate" class="form-label">Expected Wedding Date</label>
+                            <input type="date" id="weddingDate" name="weddingDate" class="form-control">
+                        </div>
+                        <!-- HTML5 datalist for city autocomplete -->
+                        <div class="mb-3">
+                            <label for="weddingCity" class="form-label">Wedding City</label>
+                            <input type="text" id="weddingCity" name="weddingCity" class="form-control"
+                                placeholder="Type a city..." list="citySuggestions">
+                            <datalist id="citySuggestions">
+                                <option value="Mumbai">
+                                <option value="Delhi">
+                                <option value="Jaipur">
+                                <option value="Udaipur">
+                                <option value="Goa">
+                                <option value="Bangalore">
+                                <option value="Hyderabad">
+                                <option value="Pune">
+                                <option value="Chennai">
+                                <option value="Kolkata">
+                                <option value="Dubai">
+                                <option value="Bali">
+                            </datalist>
+                        </div>
+                        <!-- HTML5 range input for budget -->
+                        <div class="mb-3">
+                            <label for="budgetRange" class="form-label">
+                                Estimated Budget: <strong id="budgetDisplay" style="color:#a07840;">&#8377;10
+                                    Lakh</strong>
+                            </label>
+                            <input type="range" id="budgetRange" name="budgetRange" class="form-range" min="5" max="100"
+                                step="5" value="10"
+                                oninput="document.getElementById('budgetDisplay').textContent='\u20B9'+this.value+' Lakh'">
+                            <div class="d-flex justify-content-between" style="font-size:0.78rem; color:#a07840;">
+                                <span>&#8377;5L</span><span>&#8377;50L</span><span>&#8377;1Cr+</span>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="weddingDetails" class="form-label">Tell us about your dream wedding</label>
+                            <textarea id="weddingDetails" name="weddingDetails" class="form-control" rows="5"
+                                placeholder="Share your ideas, locations, guest count, and requirements..."
+                                maxlength="1000"></textarea>
+                            <div class="text-end" style="font-size:0.78rem; color:#a07840;" id="charCount">0 / 1000
+                            </div>
+                        </div>
+                        <div class="d-flex gap-3">
+                            <button type="submit" class="btn-submit btn">&#10022; Send Inquiry</button>
+                            <button type="reset" class="btn-reset btn">Clear Form</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <!-- Inline CSS: font-family and font-size on footer paragraph -->
+    <footer>
+        <p style="padding: 0.4rem 0; font-family: 'Cormorant Garamond', serif; font-size: 1rem;">
+            &copy; 2024 Timeless Treasure Weddings. All rights reserved. &nbsp;|
+            <a href="#hero">Back to Top &uarr;</a>
+        </p>
+    </footer>
+
+    <!-- Bootstrap 5 JS (External) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ===== ADVANCED JAVASCRIPT ===== -->
+    <script>
+        /* 1. SCROLL PROGRESS BAR */
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            document.getElementById('scroll-progress').style.width = pct + '%';
+        });
+
+        /* 2. BACK TO TOP BUTTON */
+        const btn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                btn.style.display = 'flex';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+        btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        /* 3. NAVBAR SHRINK ON SCROLL */
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('mainNav');
+            if (window.scrollY > 80) {
+                nav.classList.add('navbar-shrink');
+            } else {
+                nav.classList.remove('navbar-shrink');
+            }
+        });
+
+        /* 4. SCROLL-REVEAL via IntersectionObserver */
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        reveals.forEach(el => observer.observe(el));
+
+        /* 5. ANIMATED STATS COUNTER */
+        function animateCounter(el) {
+            const target = parseInt(el.getAttribute('data-target'));
+            const duration = 1800;
+            const step = target / (duration / 16);
+            let current = 0;
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) { current = target; clearInterval(timer); }
+                el.textContent = Math.floor(current);
+            }, 16);
+        }
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.stat-number').forEach(animateCounter);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        document.querySelectorAll('.stats-section').forEach(s => statsObserver.observe(s));
+
+        /* 6. DIALOG MODAL on form submit */
+        const form = document.getElementById('inquiryForm');
+        const dialog = document.getElementById('confirmDialog');
+        const closeBtn = document.getElementById('closeDialog');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            dialog.showModal();
+        });
+        closeBtn.addEventListener('click', () => dialog.close());
+
+        /* 7. TEXTAREA CHARACTER COUNTER */
+        const textarea = document.getElementById('weddingDetails');
+        const charCount = document.getElementById('charCount');
+        if (textarea && charCount) {
+            textarea.addEventListener('input', () => {
+                charCount.textContent = textarea.value.length + ' / 1000';
+            });
+        }
+
+        /* 8. SMOOTH SCROLL for nav links */
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
