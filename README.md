@@ -4,12 +4,6 @@
 
 ---
 
-## 🚀 Live Project
-
-👉 Click to view:  
-https://ritikpetkar44.github.io/Web-Devlopment/
----
-
 ## 🧠 About This Repository
 
 This repository showcases a complete journey through modern web development fundamentals — starting from basic HTML structure to building fully responsive websites using CSS3 and Bootstrap.
